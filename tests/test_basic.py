@@ -1,4 +1,4 @@
-from my_project import add
+from my_project.main import add
 
 
 def test_add():
