@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets (API keys etc.): never commit
+.env
+
+# Tool caches and reports
+.mypy_cache/
+.coverage
+htmlcov/
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db

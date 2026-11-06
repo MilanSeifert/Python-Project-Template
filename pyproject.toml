@@ -1,0 +1,58 @@
+[project]
+name = "my-project"
+version = "0.1.0"
+description = "Python project template: uv, Ruff, pytest, mypy, pre-commit"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+my-project = "my_project:main"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "mypy>=2.4.1",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.4",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E", "W",  # pycodestyle: style errors and warnings
+    "F",       # pyflakes: unused imports, undefined names
+    "I",       # isort: import order
+    "B",       # bugbear: common bug patterns
+    "UP",      # pyupgrade: modern Python syntax
+    "SIM",     # simplify: simpler equivalent code
+    "D",       # pydocstyle: docstrings
+]
+ignore = ["D100", "D104"]  # no docstring required for modules and __init__.py
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"  # matches autoDocstring's "google" format
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]  # tests don't need docstrings
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src"]  # measure coverage of your code, not the tests
